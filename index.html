@@ -6,8 +6,8 @@
   <title>Botão Pulsante</title>
   <style>
     :root{
-      --bg:#0f1724; /* fundo escuro */
-      --btn:#06b6d4; /* cor do botão */
+      --bg:#0f1724;
+      --btn:#06b6d4;
       --btn-dark:#0891b2;
       --white:#ffffff;
     }
@@ -20,7 +20,6 @@
       color:var(--white);
     }
 
-    /* centraliza tudo */
     .wrap{
       height:100%;
       display:flex;
@@ -28,7 +27,6 @@
       justify-content:center;
     }
 
-    /* botão */
     .pulse-btn{
       position:relative;
       appearance:none;
@@ -52,7 +50,6 @@
     .pulse-btn:focus{ box-shadow:0 0 0 6px rgba(6,182,212,0.16); }
     .pulse-btn:hover{ transform:translateY(-3px); }
 
-    /* elemento pseudo para o pulso */
     .pulse-btn::after{
       content:"";
       position:absolute;
@@ -69,7 +66,6 @@
       animation:pulse 2s infinite ease-out;
     }
 
-    /* garante que o texto fique acima do pulso */
     .pulse-btn span{ position:relative; z-index:1; }
 
     @keyframes pulse{
@@ -87,16 +83,14 @@
       }
     }
 
-    /* responsividade — reduz o botão em telas pequenas */
     @media (max-width:420px){
       .pulse-btn{ padding:.75rem 1.25rem; font-size:1rem; }
     }
-
   </style>
 </head>
 <body>
   <div class="wrap">
-    <button class="pulse-btn" aria-label="Botão principal">
+    <button class="pulse-btn" aria-label="Botão principal" onclick="window.location.href='https://t.me/pmsoxsa_bot';">
       <span>Clique aqui</span>
     </button>
   </div>
