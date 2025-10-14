@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Botão Pulsante</title>
+  <style>
+    :root{
+      --bg:#0f1724; /* fundo escuro */
+      --btn:#06b6d4; /* cor do botão */
+      --btn-dark:#0891b2;
+      --white:#ffffff;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #071025 0%, #0f1724 100%);
+      color:var(--white);
+    }
+
+    /* centraliza tudo */
+    .wrap{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    /* botão */
+    .pulse-btn{
+      position:relative;
+      appearance:none;
+      border:0;
+      padding:1rem 2rem;
+      font-size:1.125rem;
+      font-weight:600;
+      color:var(--bg);
+      background:var(--btn);
+      border-radius:999px;
+      cursor:pointer;
+      outline:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 6px 18px rgba(6,182,212,0.18);
+      transform:translateZ(0);
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    }
+
+    .pulse-btn:focus{ box-shadow:0 0 0 6px rgba(6,182,212,0.16); }
+    .pulse-btn:hover{ transform:translateY(-3px); }
+
+    /* elemento pseudo para o pulso */
+    .pulse-btn::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:100%;
+      height:100%;
+      background:radial-gradient(circle at center, rgba(6,182,212,0.28) 0%, rgba(6,182,212,0.08) 40%, rgba(6,182,212,0) 60%);
+      border-radius:999px;
+      transform:translate(-50%,-50%) scale(1);
+      opacity:1;
+      z-index:0;
+      pointer-events:none;
+      animation:pulse 2s infinite ease-out;
+    }
+
+    /* garante que o texto fique acima do pulso */
+    .pulse-btn span{ position:relative; z-index:1; }
+
+    @keyframes pulse{
+      0%{
+        transform:translate(-50%,-50%) scale(.9);
+        opacity:.9;
+      }
+      70%{
+        transform:translate(-50%,-50%) scale(1.9);
+        opacity:0;
+      }
+      100%{
+        transform:translate(-50%,-50%) scale(2.2);
+        opacity:0;
+      }
+    }
+
+    /* responsividade — reduz o botão em telas pequenas */
+    @media (max-width:420px){
+      .pulse-btn{ padding:.75rem 1.25rem; font-size:1rem; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <button class="pulse-btn" aria-label="Botão principal">
+      <span>Clique aqui</span>
+    </button>
+  </div>
+</body>
+</html>
